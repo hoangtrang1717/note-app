@@ -1,120 +1,109 @@
-/**
- * This is a Navigation file which is wired already with Bottom Tab Navigation.
- * If you don't like it, feel free to replace with your own setup.
- * Uncomment commented lines from return() of RootNavigation to wire Login flow
- */
-import React, {useEffect} from 'react';
-import {ColorValue} from 'react-native';
+import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {useDispatch} from 'react-redux';
-// import {useSelector, useDispatch} from 'react-redux';
 
-// Hook for theme change (Light/Dark Mode)
-import {useTheme} from '../theme/useTheme';
-import {typeVariants} from '../theme/theme';
-// Get Value from Keyring (Encrypted token)
-import {getSecureValue} from '../utils/keyChain';
-// Redux slice for updating Access Token to store
-import {updateToken} from '../store/userSlice';
-
-// import {RootState} from '../store/store';
-
-// Screens
-// import Login from '../screens/auth/Login';
-import Tasks from '../screens/Tasks';
-import NetworkExample from '../screens/NetworkExample';
+import {Image} from 'react-native';
+import AddIcon from '../components/Icons/AddIcon';
+import Home from '../screens/Home';
 import Settings from '../screens/Settings';
+import {typeVariants} from '../theme/theme';
+import {useTheme} from '../theme/useTheme';
+import TabBarLabel from './TabBarLabel';
 
-// Icons for Bottom Tab Navigation
-const homeIcon = ({color}: {color: ColorValue | number}) => (
-  <Icon name="list-sharp" size={30} color={color} />
+const HomeIcon = require('../assets/icons/home.png');
+const SummaryIcon = require('../assets/icons/summary.png');
+
+const HomeFocusedIcon = require('../assets/icons/home_focus.png');
+const SummaryFocusedIcon = require('../assets/icons/summary_focus.png');
+
+// Icons for Bottom Tab Navigatrion
+const homeIcon = ({focused}: {focused: boolean}) => (
+  <Image
+    source={focused ? HomeFocusedIcon : HomeIcon}
+    width={50}
+    height={50}
+    alt="Home Icon"
+  />
 );
-const networkIcon = ({color}: {color: ColorValue | number}) => (
-  <Icon name="wifi-sharp" size={24} color={color} />
-);
-const settingsIcon = ({color}: {color: ColorValue | number}) => (
-  <Icon name="settings-sharp" size={24} color={color} />
+const addIcon = () => <AddIcon width={36} height={36} color={'#918DAC'} />;
+const summaryIcon = ({focused}: {focused: boolean}) => (
+  <Image
+    source={focused ? SummaryFocusedIcon : SummaryIcon}
+    width={50}
+    height={50}
+    alt="Summary Icon"
+  />
 );
 
 // Root Navigation
 // const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function homeTabBarLabel({focused}: {focused: boolean}, theme: any) {
+  return <TabBarLabel label="Home" focused={focused} theme={theme} />;
+}
+
+function summaryTabBarLabel({focused}: {focused: boolean}, theme: any) {
+  return <TabBarLabel label="Summary" focused={focused} theme={theme} />;
+}
+
 export default function RootNavigation() {
   const {theme} = useTheme();
-  const dispatch = useDispatch();
-  // const user = useSelector((state: RootState) => state.user);
-
-  // Copy existing token from local storage to redux store
-  useEffect(() => {
-    async function checkIsLogined() {
-      try {
-        let temp = await getSecureValue('token');
-        dispatch(updateToken({token: temp}));
-      } catch (e) {}
-    }
-    checkIsLogined();
-  }, [dispatch]);
 
   return (
     <NavigationContainer>
-      {/* {user.token ? ( */}
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {
             backgroundColor: theme.cardBg,
-            borderTopColor: theme?.layoutBg,
+            height: 120,
+            borderTopEndRadius: 20,
+            borderTopStartRadius: 20,
+            paddingTop: 20,
           },
-          tabBarInactiveTintColor: theme.color,
-          tabBarActiveTintColor: theme.primary,
-          headerStyle: {backgroundColor: theme.cardBg, height: 50},
-          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: theme.cardBg,
+            height: 120,
+            borderBottomEndRadius: 20,
+          },
+          headerTitleAlign: 'left',
           headerTitleStyle: {
             fontFamily: typeVariants.titleLarge.fontFamily,
             fontSize: 18,
             color: theme.primary,
             fontWeight: 'bold',
           },
-          tabBarShowLabel: false,
+          tabBarShowLabel: true,
         }}>
         <Tab.Screen
-          name="To Do"
-          component={Tasks}
+          name="Home"
+          component={Home}
           options={{
             tabBarIcon: homeIcon,
-            tabBarTestID: 'BottomTab.ToDo',
+            tabBarLabel: (props: {focused: boolean}) =>
+              homeTabBarLabel(props, theme),
           }}
         />
         <Tab.Screen
           name="NetworkExample"
-          component={NetworkExample}
+          component={Home}
           options={{
-            tabBarIcon: networkIcon,
-            tabBarTestID: 'BottomTab.Network',
+            tabBarIcon: addIcon,
+            tabBarLabel: '',
           }}
         />
         <Tab.Screen
-          name="Settings"
+          name="Summary"
           component={Settings}
           options={{
-            // headerShown: false,
-            tabBarIcon: settingsIcon,
-            tabBarTestID: 'BottomTab.Settings',
+            tabBarIcon: summaryIcon,
+            tabBarLabel: (props: {focused: boolean}) =>
+              summaryTabBarLabel(props, theme),
           }}
         />
       </Tab.Navigator>
-      {/* ) : (
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Login" component={Login} />
-        </Stack.Navigator>
-        )} */}
     </NavigationContainer>
   );
 }

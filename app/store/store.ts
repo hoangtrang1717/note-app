@@ -1,16 +1,18 @@
-import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import {persistStore, persistReducer} from 'redux-persist';
-import {reduxStorage} from './storage';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistReducer, persistStore } from 'redux-persist';
+import { reduxStorage } from './storage';
 
 // Slices
+import dummyNetwokSlice from './dummyNetwork';
+import notesSlice from './notesSlice';
 import tasksSlice from './tasksSlice';
 import userSlice from './userSlice';
-import dummyNetwokSlice from './dummyNetwork';
 
 const rootReducer = combineReducers({
   todos: tasksSlice,
   user: userSlice,
   dummyNetwork: dummyNetwokSlice,
+  notes: notesSlice,
 });
 
 const persistConfig = {
@@ -24,7 +26,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({immutableCheck: false, serializableCheck: false}),
+    getDefaultMiddleware({ immutableCheck: false, serializableCheck: false }),
 });
 
 export const persistor = persistStore(store);

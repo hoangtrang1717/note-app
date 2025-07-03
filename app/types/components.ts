@@ -1,5 +1,5 @@
-import {ReactNode} from 'react';
-import {ViewStyle, StyleProp, TextInputProps, ViewProps} from 'react-native';
+import { ReactNode } from 'react';
+import { StyleProp, TextInputProps, ViewProps, ViewStyle } from 'react-native';
 
 // Layout
 export interface LayoutPropsType extends ViewProps {
@@ -18,6 +18,8 @@ export interface MenuItemPropsType {
 export interface CardPropsType {
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  useGradient?: boolean;
+  gradientVariant?: 'primary' | 'overlay' | 'card';
 }
 
 // Input

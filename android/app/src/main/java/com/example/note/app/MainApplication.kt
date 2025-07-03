@@ -1,4 +1,4 @@
-package com.rn_redux_boilerplate
+package com.example.note.app
 
 import android.app.Application
 import com.facebook.react.PackageList

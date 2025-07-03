@@ -1,11 +1,26 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useTheme} from '../theme/useTheme';
 import {spacing} from '../theme/theme';
+import {useTheme} from '../theme/useTheme';
 import {CardPropsType} from '../types/components';
+import GradientView from './GradientView';
 
-const Card = ({children, style}: CardPropsType) => {
+const Card = ({
+  children,
+  style,
+  useGradient = false,
+  gradientVariant = 'card',
+}: CardPropsType) => {
   const {theme} = useTheme();
+
+  if (useGradient) {
+    return (
+      <GradientView variant={gradientVariant} style={[styles.card, style]}>
+        {children}
+      </GradientView>
+    );
+  }
+
   return (
     <View
       style={[

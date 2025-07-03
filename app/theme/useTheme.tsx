@@ -1,11 +1,8 @@
-/**
- * Dark/Light Mode
- */
 
 import * as React from 'react';
 
 // Import preconfigured themes from theme file
-import {themes, themeType} from './theme';
+import { themes, themeType } from './theme';
 
 // Types
 export interface ThemeContextInterface {
@@ -26,7 +23,7 @@ export const ThemeProvider = ({
 }: ThemeProviderInterface): JSX.Element => {
   const [theme, setTheme] = React.useState(themes.light);
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -36,11 +33,11 @@ export const ThemeProvider = ({
 export const useTheme = () => {
   const state = React.useContext(ThemeContext);
 
-  const {theme, setTheme} = state;
+  const { theme, setTheme } = state;
 
   const toggleTheme = (v: boolean) => {
     setTheme(v ? themes.dark : themes.light);
   };
 
-  return {theme, toggleTheme};
+  return { theme, toggleTheme };
 };

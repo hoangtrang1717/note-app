@@ -24,6 +24,7 @@ export interface themeType {
   cardBorderColor: string;
   accent: string;
   error: string;
+  focused: string;
 }
 
 interface themesType {
@@ -68,28 +69,30 @@ const typeVariants = {
   },
 };
 
-// Themes:- Can alter values here. Can only be consumed through Context (see useTheme.js file)
 const themes: themesType = {
   light: {
-    name: 'light',
-    color: '#695D5D',
-    primary: '#2bbca2',
-    layoutBg: '#e0eeec',
-    cardBg: '#ffffff',
-    cardBorderColor: '#EEECEC',
+    name: 'dark',
+    color: '#ffffff',
+    primary: '#ffffff',
+    layoutBg: '#121212',
+    cardBg: '#1C0B37',
+    cardBorderColor: '#1A1A1A',
     accent: '#0071ff',
     error: '#B00020',
+    focused: '#F94695',
   },
   dark: {
     name: 'dark',
     color: '#ffffff',
-    primary: '#2bbca2',
+    primary: '#ffffff',
     layoutBg: '#121212',
-    cardBg: '#1e1e1e',
+    cardBg: '#1C0B37',
     cardBorderColor: '#1A1A1A',
     accent: '#0071ff',
     error: '#B00020',
+    focused: '#F94695',
   },
 };
 
-export {spacing, typeSizes, typeVariants, themes};
+export { spacing, themes, typeSizes, typeVariants };
+
