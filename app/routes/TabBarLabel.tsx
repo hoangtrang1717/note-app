@@ -5,16 +5,15 @@ import {typeVariants} from '../theme/theme';
 type TabBarLabelProps = {
   label: string;
   focused: boolean;
-  theme: any;
 };
 
-function TabBarLabel({label, focused, theme}: TabBarLabelProps) {
+function TabBarLabel({label, focused}: TabBarLabelProps) {
   return (
     <Text
-      style={{
-        ...styles.label,
-        color: focused ? theme.focused : '#918DAC',
-      }}>
+      style={[
+        styles.label,
+        focused ? styles.labelFocused : styles.labelDefault,
+      ]}>
       {label}
     </Text>
   );
@@ -26,7 +25,12 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: typeVariants.titleLarge.fontFamily,
     fontSize: 12,
-    color: '#918DAC',
     paddingTop: 10,
+  },
+  labelFocused: {
+    color: '#F94695',
+  },
+  labelDefault: {
+    color: '#918DAC',
   },
 });

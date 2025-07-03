@@ -1,89 +1,73 @@
-<!--
-  Title: React Native Redux Boilerplate
-  Description: A starter template for React Native with Redux Toolkit
-  Author: saheeranas
-  -->
+**Core:**
+- React Native `0.78.0`
+- React `19.0.0`
+- TypeScript `5.0.4`
+- Node.js `>=18`
 
-# React Native Redux boilerplate with Redux Toolkit (RTK) and TypeScript.
-
-A React Native starter template.
-
-<kbd>
-  <img src="demo/assets/react-native-redux-boilerplate-saheer-anas.png?raw=true"> 
-</kbd>
-
-## Features
-
-- New Architecture/Bridgeless Mode enabled by default.
-- Redux setup with Redux Toolkit.
-- Offline storage with Redux Persist.
-- Typescript
-- Dark Mode
-- Navigation setup
-- Login wiring (optional)
-- Sample CRUD code (To Do App) included.
-- Sample Network Call (RTK) included.
-- Secure Token storage.
-- Husky
-- Environment Variables (ENV)
-
-## Dependencies
-
-- React Native **v0.78.0**
-- Redux Toolkit (RTK) v2.0
-- TypeScript
+**Navigation:**
 - React Navigation v7
-- React Native Vector Icons
-- Formik & Yup
-- Axios
-- React Native Keychain
-- Redux persist
 
-## Screenshots
+**State Management:**
+- Redux Toolkit `2.5.1`
+- MMKV Storage `3.2.0`
 
-<p float="left">
-  <img src="demo/assets/ss1.png?raw=true" width="250" />
-  &nbsp; &nbsp; &nbsp; &nbsp;
-  <img src="demo/assets/ss2.png?raw=true" width="250" />  
-</p>
+**UI & Styling:**
+- Linear Gradient `2.8.3`
+- Vector Icons `10.2.0`
+- SVG Support `15.12.0`
 
-## Installation
+**Development:**
+- ESLint, Prettier, Jest
+- Husky, Detox (E2E)
 
-### Clone this repo
+## 📱 Platform Requirements
 
-```
-git clone https://github.com/saheeranas/react-native-redux-boilerplate.git
-```
+**Android:** SDK 24+ (Android 7.0), Target SDK 35  
+**iOS:** As per React Native 0.78.0 requirements
 
-### Open project folder and install dependencies
+## � Quick Start
 
-```
-cd react-native-redux-boilerplate
-yarn
-or
-npm i
-```
+### Prerequisites
+- Node.js 18+
+- React Native CLI
+- Android Studio / Xcode
 
-### Rename environment variable files
+### Installation
+```bash
+# Clone and install
+git clone <repository-url>
+cd note-app
+npm install
 
-Example: .env.template file to .env
+# iOS setup (macOS only)
+cd ios && pod install && cd ..
 
-### Run the project
-
-```
-yarn android
-or
-npm run android
+# Start development
+npm start
+npm run android  # or npm run ios
 ```
 
-or
+## 📜 Scripts
+
+- `npm start` - Start Metro
+- `npm run android/ios` - Run on device
+- `npm test` - Run tests
+- `npm run lint` - Lint code
+
+## 📂 Project Structure
 
 ```
-yarn ios
-or
-npm run ios
+app/
+├── components/     # Reusable UI components
+├── screens/        # App screens
+├── store/          # Redux store
+├── constants/      # App constants
+├── hooks/          # Custom hooks
 ```
 
-## License
+## 🏗 Architecture
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
+- **State**: Redux Toolkit + MMKV
+- **Navigation**: React Navigation v7
+- **Styling**: Centralized design tokens
+- **Type Safety**: Full TypeScript

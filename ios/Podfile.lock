@@ -1370,6 +1370,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-vector-icons-evil-icons (12.0.1)
+  - react-native-vector-icons-fontawesome6 (12.0.1)
   - React-NativeModulesApple (0.78.0):
     - glog
     - hermes-engine
@@ -1855,6 +1857,8 @@ DEPENDENCIES:
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
+  - "react-native-vector-icons-evil-icons (from `../node_modules/@react-native-vector-icons/evil-icons`)"
+  - "react-native-vector-icons-fontawesome6 (from `../node_modules/@react-native-vector-icons/fontawesome6`)"
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-performancetimeline (from `../node_modules/react-native/ReactCommon/react/performance/timeline`)
@@ -1978,6 +1982,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
     :path: "../node_modules/@react-native-community/slider"
+  react-native-vector-icons-evil-icons:
+    :path: "../node_modules/@react-native-vector-icons/evil-icons"
+  react-native-vector-icons-fontawesome6:
+    :path: "../node_modules/@react-native-vector-icons/fontawesome6"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -2089,6 +2097,8 @@ SPEC CHECKSUMS:
   react-native-mmkv: c969437e688f281c34d90310d5e05bbd5f8732a1
   react-native-safe-area-context: 7e513d737b0b5c1d10bbe0e5fcc9f925a7be144c
   react-native-slider: 310d3f89edd6ca8344a974bfe83a29a3fbb60e5a
+  react-native-vector-icons-evil-icons: 26a89e2d729c84231afbe726de8aa5b976a7a6be
+  react-native-vector-icons-fontawesome6: 624a5578d701e52b18fb7f35b56556395a4249c0
   React-NativeModulesApple: 88433b6946778bea9c153e27b671de15411bf225
   React-perflogger: 9e8d3c0dc0194eb932162812a168aa5dc662f418
   React-performancetimeline: 5a2d6efef52bdcefac079c7baa30934978acd023
