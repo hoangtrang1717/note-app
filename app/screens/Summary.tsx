@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import GradientView from '../components/GradientView';
 import LoadingSpinner from '../components/LoadingSpinner';
-import {useNotes} from '../hooks/useNotes';
 import {COLORS, TEXT_STYLES, UI_CONSTANTS} from '../constants';
+import {useNotes} from '../hooks/useNotes';
 
 // Image imports
 const SummaryHeaderIcon = require('../assets/images/SummaryHeader.png');

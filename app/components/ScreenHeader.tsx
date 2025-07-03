@@ -1,6 +1,6 @@
+import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import React, {memo} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import {COLORS, TEXT_STYLES, UI_CONSTANTS} from '../constants';
 
 interface ScreenHeaderProps {
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     height: UI_CONSTANTS.HEADER_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-start',
     paddingHorizontal: 20,
     paddingTop: 40,
     backgroundColor: COLORS.HEADER_BG,
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
   backButton: {
     width: 40,
     height: 40,
-    borderRadius: UI_CONSTANTS.BORDER_RADIUS.large,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -66,8 +66,6 @@ const styles = StyleSheet.create({
     fontWeight: TEXT_STYLES.FONT_WEIGHTS.semibold,
     fontSize: TEXT_STYLES.FONT_SIZES.headerTitle,
     color: COLORS.WHITE,
-    flex: 1,
-    textAlign: 'center',
   },
   rightContainer: {
     width: 40,
